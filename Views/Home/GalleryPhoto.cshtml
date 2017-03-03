@@ -1,0 +1,45 @@
+﻿@model ListBlog.Models.Gallery
+@{
+    ViewBag.Title = Model.Name;
+}
+
+
+
+@section Scripts {
+<link rel="stylesheet" href="~/Content/css/anythingslider.css" media="screen">
+<script type="text/javascript" src="~/Content/js/jquery.anythingslider.js" charset="utf-8"></script>
+<style type="text/css">
+    #slider {
+        width: 469px;
+        height: 352px;
+    }
+</style>
+<script type="text/javascript">
+    // DOM Ready
+    $(function () {
+        $("#slider").anythingSlider();
+    });
+</script>
+
+}
+
+@{
+    string folder = Model.Folder;
+}
+
+
+@section Body
+{
+    <h4 align="center"><a href="#">@Model.Name</a></h4><br />
+    <ul id="slider">
+        @foreach (var item in Model.Photos)
+        {
+
+            <li><img src="~/Content/Gallery/@folder/@item.File" /></li>
+        }
+    </ul>
+    <div id='photoCenter'>
+        <div id="close"></div>
+    </div>
+
+}

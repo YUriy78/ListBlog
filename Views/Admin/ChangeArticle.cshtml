@@ -1,0 +1,29 @@
+﻿@model ListBlog.Models.Article
+@{
+    string[] arr = new string[ViewBag.Count];
+    int count = 0;
+    foreach (var item in ViewBag.Section)
+    {
+        arr[count] = item;
+        count++;
+    }
+}
+
+
+
+@section Body {
+
+
+    @using (Html.BeginForm())
+    {
+        <p>Категория: <br /> @Html.DropDownList("Section", new SelectList(arr), Model.Section_articles.Name))</p>
+        <p>@Html.HiddenFor(x => x.Id)</p>
+        <p>Заголовок статьи: <br /> @Html.TextBoxFor(x => x.Title)</p>
+        <p>Описание: <br /> @Html.TextAreaFor(x => x.Description, new { cols = "30", rows = "5" })</p>
+        <p>Статья: <br /> @Html.TextAreaFor(x => x.Body, new { cols = "30", rows = "15" })</p>
+        <p>Aвтор статьи: <br /> @Html.TextBoxFor(x => x.Author)</p>
+        <p>Дата статьи: <br /> @Html.TextBoxFor(x => x.Date, "{0:dd/MM/yyyy}")</p>
+        <input type="submit" value="Отправить" />
+    }
+
+}

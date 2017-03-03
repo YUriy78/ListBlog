@@ -1,0 +1,67 @@
+﻿@model ListBlog.Models.Admin
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+@section Body
+{
+<p>@Html.ValidationSummary()</p>
+    <p class="Warning">@ViewBag.Result</p>
+    <p>&nbsp;</p>
+    @{
+        if (Request.Cookies["Admin"] != null)
+        {
+            <table cellpadding="30" cellspacing="10">
+                <thead>
+                    <tr colspan="2"><td align="center"><h2>Aдминистрированиe</h2>
+                    <p>&nbsp;</p>
+                    </td></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p>@Html.ActionLink("Список статей", "Articles", "Home")</p>
+                            <p>@Html.ActionLink("Добавить статью", "AddArticle")</p>
+                            <p>@Html.ActionLink("Добавить категорию статей", "AddSection")</p>
+                            <p>@Html.ActionLink("Удалить категорию статей", "DeleteSection")</p>
+                            <p>@Html.ActionLink("Список журналов", "Journals", "Home")</p>
+                            <p>@Html.ActionLink("Добавить журнал", "AddJournal")</p>
+                        </td>
+                        <td>
+                            <p>@Html.ActionLink("Список стихов", "Poetry", "Home")</p>
+                            <p>@Html.ActionLink("Добавить стихотвотение", "AddPoetry")</p>
+                            <p>@Html.ActionLink("Добавить категорию галереи", "AddCategoryGallery")</p>
+                            <p>@Html.ActionLink("Добавить галерею", "AddGallery")</p>
+                            <p>@Html.ActionLink("Изменить пароль", "ChangePassword")</p>
+                            <p>@Html.ActionLink("Выйти", "Exit")</p>
+                         </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+
+        else
+        {
+            <h2>Вход в админку</h2><br /><br />
+            using (Html.BeginForm())
+            {
+                <p>Login: <br />@Html.TextBoxFor(x => x.Login)</p>
+                <p>&nbsp;</p>
+                <p>Password: <br />@Html.PasswordFor(x => x.Password)</p><br />
+                <input type="submit" value="Войти" />
+            }
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+

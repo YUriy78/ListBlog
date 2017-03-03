@@ -1,0 +1,17 @@
+﻿@model ListBlog.Models.FooterModel
+
+<div class="particles">
+    <h2>Последние статьи</h2>
+    @foreach(var item in Model.Articles)
+    { 
+       <img src="~/Content/images/arrow.gif" alt="" /> <a href="~/Home/Article?id=@item.Id">@item.Title</a> <br />
+    }
+</div>
+<div class="comments">
+    <h2>Последние журналы</h2>
+    @foreach (var item in Model.Journals)
+    {
+        <img src="~/Content/images/arrow.gif" alt="" /> <a href="~/Content/journal/@item.File">@item.Title</a> <br />
+    }
+    
+</div>

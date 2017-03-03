@@ -1,0 +1,9 @@
+﻿table.grid td {
+    padding: 10px;
+}
+
+tfoot tr td {
+    font-weight: bolder;
+    font-size: 14px;
+}
+

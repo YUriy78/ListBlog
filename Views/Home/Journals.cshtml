@@ -1,0 +1,44 @@
+﻿@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".DelLink").click(function () {
+                if (confirm("Вы действительно хотите удалить?")) {
+                    return true;
+                }
+                return false;
+
+            });
+
+        });
+
+    </script>
+}
+
+@{
+    var grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+
+@section Body
+{
+    @{
+        if (Request.Cookies["Admin"] == null)
+        {
+            @grid.GetHtml(tableStyle: "grid",
+                  columns: grid.Columns(
+                  grid.Column(columnName: "Description", header: "Список журналов", format: @<div><p><a href="~/Content/journal/@item.File">@item.Title</a></p></div>)
+               )
+             )
+        }
+        else
+        {
+            @grid.GetHtml(tableStyle: "grid",
+                  columns: grid.Columns(
+                  grid.Column(columnName: "Description", header: "Список журналов", format: @<div><p><a href="~/Content/journal/@item.File">@item.Title</a></p></div>),
+                  grid.Column(columnName: "Id", header: "Действия", format: @<div><a class="DelLink" href="~/Admin/DeleteJournal?id=@item.Id">Удалить</a><br /></div>)
+              )
+            )
+
+        }
+    }
+}

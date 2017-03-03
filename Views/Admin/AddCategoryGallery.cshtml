@@ -1,0 +1,12 @@
+﻿@model ListBlog.Models.CategoryGallery
+
+@section Body{
+   @using(Html.BeginForm())
+   {
+    <p>Название: <br /> @Html.TextBoxFor(x => x.Name)</p>
+    <p><input type="submit" value="Отправить" /></p>
+
+   }
+}
+
+

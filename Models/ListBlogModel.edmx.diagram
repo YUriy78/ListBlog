@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dfbe1d8657454556b7844c837d91a337" Name="Diagram1">
+        <EntityTypeShape EntityType="u0275752_listblogModel.Admin" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0275752_listblogModel.AnswerAdmin" Width="1.5" PointX="8" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0275752_listblogModel.Article" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0275752_listblogModel.CategoryGallery" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0275752_listblogModel.Comment" Width="1.5" PointX="5.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0275752_listblogModel.Gallery" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0275752_listblogModel.Journal" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0275752_listblogModel.Photo" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0275752_listblogModel.Poetry" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0275752_listblogModel.Section_articles" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="u0275752_listblogModel.FK__AnswerAdm__Comme__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="u0275752_listblogModel.FK__Article__Section__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="u0275752_listblogModel.FK__Gallery__Categor__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="u0275752_listblogModel.FK__Photo__GalleryID__2D27B809" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

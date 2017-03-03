@@ -1,0 +1,20 @@
+﻿input[type=submit]
+{
+    padding: 5px;
+}
+
+h4 a{
+    font-size: 14px;
+}
+#photo-cath{margin-left:150px;}
+
+.Warning 
+{
+    color: red;
+    font-weight: bolder;    
+}
+
+.validation-summary-errors ul li {
+    color: red;
+    font-weight: bolder; 
+}

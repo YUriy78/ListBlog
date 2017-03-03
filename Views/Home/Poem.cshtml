@@ -1,0 +1,19 @@
+﻿@model ListBlog.Models.Poetry
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+
+@section Body {
+    
+    
+    <h2>@Model.Title</h2>
+    <p>&nbsp;</p>
+    @Html.Raw(Model.Body)
+    <p>&nbsp;</p>
+    <p>Дата публикации: @Model.Date.ToShortDateString()</p>
+
+}
+
+

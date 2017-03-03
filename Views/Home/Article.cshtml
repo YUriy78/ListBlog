@@ -1,0 +1,13 @@
+﻿@model ListBlog.Models.Article
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+@section Body
+{
+    <p><strong>@Model.Section_articles.Name</strong></p>
+    <h2 align="center">@Model.Title</h2>
+    <p>&nbsp;</p>
+    @Html.Raw(Model.Body)
+} 

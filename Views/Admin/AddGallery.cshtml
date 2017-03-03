@@ -1,0 +1,43 @@
+﻿@model ListBlog.Models.Gallery
+
+@section Scripts
+{
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#add-input').click(function ()
+        {
+            $('#upload').append('<input name="uploads" type="file"><br />');
+        });
+
+     });
+    </script>
+}
+
+@{
+    int count = 0;
+    string[] arr = new string[ViewBag.Count];
+    foreach (var item in ViewBag.Categories)
+    {
+        arr[count] = item.Name;
+        count++;
+    }
+    
+    
+}
+
+@section Body {
+    @using (Html.BeginForm("AddGallery", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p class="Warning">@ViewBag.Warning</p>
+        <p>Категории галерии: <br /> @Html.DropDownList("Category", new SelectList(arr))</p>
+        <p>Название галереи: <br /> @Html.TextBoxFor(x => x.Name)</p>
+        <p>Название папки: <br /> <input type="text" name="Folder" /></p>
+        <div id="upload">
+            <input type="file" name="uploads" /><br />
+        </div><br />
+        <a onclick="return false;" id="add-input" href="#">Загрузить еще фото</a><br />
+        <input type="submit" value="Отправить" /><br />
+    }
+}
+
+

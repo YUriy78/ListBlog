@@ -1,0 +1,11 @@
+﻿@model ListBlog.Models.Journal
+
+@section Body {
+@using (Html.BeginForm("AddJournal", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    
+    <p>Название: <br /> @Html.TextBoxFor(x => x.Title)</p><br />
+    <input type="file" name="upload" /><br /><br />
+    <input type="submit" value="Отправить" />
+}
+}

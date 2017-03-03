@@ -1,0 +1,56 @@
+﻿@model ListBlog.Models.CategoryGallery
+@{
+    ViewBag.Title = "List-blog";
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".DelLink").click(function () {
+                if(confirm("Вы действительно хотите удалить?"))
+                {
+                    return true;
+                }
+                return false;
+
+            });
+
+        });
+
+    </script>
+}
+
+
+@{
+    var grid = new WebGrid(source: Model.Galleries, rowsPerPage: 10);
+}
+
+@section Body
+{
+    <div id="photo-cath">
+
+        @{
+            if (Request.Cookies["Admin"] == null)
+            {
+               @grid.GetHtml(tableStyle: "grid",
+                  columns: grid.Columns(
+                  grid.Column(columnName: "Description", header: "Галлереи", format: @<div><h4><a href="~/Home/GalleryPhoto?id=@item.Id">@item.Name</a></h4></div>)
+                      )
+                  )
+            }
+            else
+            {
+                @grid.GetHtml(tableStyle: "grid",
+                      columns: grid.Columns(
+                      grid.Column(columnName: "Description", header: "Галлереи", format: @<div><h4><a href="~/Home/GalleryPhoto?id=@item.Id">@item.Name</a></h4></div>),
+                      grid.Column(columnName: "Id", header: "Действия", format: @<div><a class="DelLink" href="~/Admin/DelGallery?Id=@item.Id">Удалить</a></div>)
+                      )
+                 )
+
+            }
+        }
+                
+    </div>
+}
+

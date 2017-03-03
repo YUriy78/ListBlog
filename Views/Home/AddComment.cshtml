@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "List-blog";
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".DelLink").click(function () {
+                if(confirm("Вы действительно хотите удалить?"))
+                {
+                    return true;
+                }
+                return false;
+
+            });
+            $('#respond').hide();
+            $('a.link-toggle').click(function () {
+                if ($(this).text() == "Написать комментарий") {
+                    $('#respond').slideDown(500);
+                    $(this).text("Закрыть форму сообщения")
+                }
+                else {
+                    $('#respond').slideUp(500);
+                    $(this).text("Написать комментарий");
+                }
+
+            });
+
+        });
+        
+
+    </script>
+}
+@model ICollection<ListBlog.Models.Comment>
+
+@{
+    var grid = new WebGrid(source: Model, rowsPerPage: 5);
+}
+
+@section Body
+{
+    @{
+        if (Request.Cookies["Admin"] == null)
+        {
+            @grid.GetHtml(tableStyle: "grid",
+                  columns: grid.Columns(
+                  grid.Column(columnName: "Description", header: "Сooбщения пользователей", format: @<div><p>@item.Body</p><p>@item.Email</p><p>@item.Name &nbsp;&nbsp;&nbsp; @item.Date.ToShortDateString()</p></div>)
+            )
+          )
+        }
+        else
+        {
+            @grid.GetHtml(tableStyle: "grid",
+                  columns: grid.Columns(
+                       grid.Column(columnName: "Description", header: "Сooбщения пользователей", format: @<div><p>@item.Body</p><p>@item.Email</p><p>@item.Name &nbsp;&nbsp;&nbsp; @item.Date.ToShortDateString()</p></div>),
+                  grid.Column(columnName: "Id", header: "Действия", format: @<div><a class="DelLink" href="~/Admin/DelComment?id=@item.Id">Удалить</a></div>)
+           )
+         )
+
+        }
+    }
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>@Html.ValidationSummary()</p>
+    <a class="link-toggle" href="#">Написать комментарий</a>
+    <div id="respond">
+        @Html.Action("AddCommentForm")
+    </div>
+}
+
+
+
+

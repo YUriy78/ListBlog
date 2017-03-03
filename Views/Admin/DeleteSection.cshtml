@@ -1,0 +1,27 @@
+﻿@model ICollection<string>
+
+@{
+    string[] arr = new string[ViewBag.Count];
+    int count = 0;
+    foreach(var item in Model)
+    {
+        arr[count] = item;
+        count++;
+
+    }
+        
+    
+}
+
+
+@section Body{
+    
+    @using (Html.BeginForm())
+    {
+        <p>Категория: <br />@Html.DropDownList("Section", new SelectList(arr))</p>
+        <p><input type="submit" value="Удалить" /></p>
+    }
+
+}
+
+

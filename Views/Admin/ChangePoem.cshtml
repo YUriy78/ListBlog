@@ -1,0 +1,15 @@
+﻿@model ListBlog.Models.Poetry
+
+@section Body{
+
+    @using (@Html.BeginForm())
+    {
+        <p>Заголовок: <br />@Html.TextBoxFor(x => x.Title)</p>
+        <p>Текст: <br />@Html.TextAreaFor(x => x.Body, new { cols = "23", rows = "10" })</p>
+        <p>Дата: <br />@Html.TextBoxFor(x => x.Date, "{0:dd/MM/yyyy}")</p><br />
+        <p><input type="submit" value="Отправить" /></p>
+    }
+
+}
+
+

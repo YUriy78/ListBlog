@@ -1,0 +1,9 @@
+﻿@model ListBlog.Models.Comment
+
+@using(Html.BeginForm("AddComment", "Home", FormMethod.Post))
+{
+    <p>Ваше имя: <br /> @Html.TextBoxFor(x => x.Name)</p>
+    <p>Ваш email: <br /> @Html.TextBoxFor(x => x.Email)</p>
+    <p>Сообщение: <br /> @Html.TextAreaFor(x => x.Body, new { cols="23", rows="10" })</p>
+    <p><input type="submit" value="Отправить" /></p>
+}

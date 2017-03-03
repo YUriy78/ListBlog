@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "List-blog"; 
+}
+
+@section Scripts
+{
+<script type="text/javascript">
+        $(function () {
+            $(".DelLink").click(function () {
+                if(confirm("Вы действительно хотите удалить?"))
+                {
+                    return true;
+                }
+                return false;
+
+            });
+
+        });
+
+</script>
+}
+
+@{
+    var grid = new WebGrid(source: Model, rowsPerPage: 5);
+}
+
+@section Body 
+{
+    @{
+        if (Request.Cookies["Admin"] == null)
+        {             
+            @grid.GetHtml(tableStyle: "grid",
+                  columns: grid.Columns(
+                  grid.Column(columnName: "Description", header: "Описание статей", format: @<div><h2><a href="~/Home/Article?id=@item.Id">@item.Title</a></h2><p>@item.Description<a href="~/Home/Article?id=@item.Id">Читать далее >></a></p></div> )
+                  )
+                )
+        }
+        else 
+        {
+           @grid.GetHtml(tableStyle: "grid",
+                  columns: grid.Columns(
+                  grid.Column(columnName: "Description", header: "Описание статей", format: @<div><h2><a href="~/Home/Article?id=@item.Id">@item.Title</a></h2><p>@item.Description<a href="~/Home/Article?id=@item.Id">Читать далее >></a></p></div>),
+                  grid.Column(columnName: "Id", header: "Действия", format: @<div><a class="DelLink" href="~/Admin/DeleteArticle?id=@item.Id">Удалить</a><br /><br /><a href="~/Admin/ChangeArticle?id=@item.Id">Изменить</a></div>)
+                )
+              )
+
+        }
+}
+}
+
+

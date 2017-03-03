@@ -1,0 +1,22 @@
+﻿@model ICollection<ListBlog.Models.Article>
+
+@{
+    ViewBag.Title = "List-blog";    
+}
+
+@section Body
+{
+    <p>&nbsp;</p>
+    <p class="text-main">List-blog - личный блог журналиста Лены Ивановны Булычевой - шеф-редактора юридического научно-публицистического журнала "Закон и право".</p>
+    <p>&nbsp;</p>
+    <h2>Выборочные статьи:</h2>
+    <p>&nbsp;</p>
+    @foreach (var item in Model)
+    {
+        <h4><a href="~/Home/Article?id=@item.Id">@item.Title</a></h4>
+        <p>@item.Description <a href="~/Home/Article?id=@item.Id">Читать далее &#187;</a></p><br />
+    }
+
+<br />
+
+}
